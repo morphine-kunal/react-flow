@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 
+//a popUp to display whether the flow is saved or not
 const PopUp = ({ message, type }) => {
   const [showPopUp, setShowPopUp] = useState(true);
 

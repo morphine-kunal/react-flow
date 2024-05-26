@@ -11,6 +11,8 @@ import Header from "../Header/header";
 import PopUp from "../popUp";
 import CustomNode from "./customNode";
 
+//initializing two dummy nodes
+
 const initialNodes = [
   {
     id: "1",
@@ -30,7 +32,7 @@ const initialEdges = [];
 const edgeType = {};
 
 const nodeTypes = {
-  custom: CustomNode, // Register the custom node
+  custom: CustomNode, // Registering  the custom node
 };
 
 const Pannel = () => {
@@ -41,20 +43,23 @@ const Pannel = () => {
   const [popupMessage, setPopupMessage] = useState("");
   const [popupType, setPopupType] = useState("");
 
+  // changing nodes position
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     []
   );
+
+  //updating the edges
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
     []
   );
-
+  // connecting the nodes
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     []
   );
-
+  // adding new node
   const addNode = () => {
     const newNode = {
       id: `${nodes.length + 1}`,
@@ -65,11 +70,13 @@ const Pannel = () => {
     setNodes((nds) => nds.concat(newNode));
   };
 
+  //showing the form to update the label of the node on Double Clicking
   const onNodeDoubleClick = (event, node) => {
     setSelectedNode(node);
     setLabel(node.data.label);
   };
 
+  //updating the label of the node
   const handleLabelChange = (event) => {
     setLabel(event.target.value);
   };
@@ -88,6 +95,7 @@ const Pannel = () => {
     }
   };
 
+  //saving the flow
   const handleSave = () => {
     const nodesWithEmptyTargetHandles = nodes.filter((node) => {
       return !edges.some((edge) => edge.target === node.id);
@@ -125,6 +133,7 @@ const Pannel = () => {
         <Controls />
       </ReactFlow>
 
+      {/* creating a side bar with a message button, on cliking that button a new node will be created on the pannel with name =  node +{ count of the node}  */}
       <aside className="border w-[300px] pt-20 px-5">
         {!selectedNode && (
           <button
@@ -143,6 +152,8 @@ const Pannel = () => {
             </div>
           </button>
         )}
+
+        {/* shwoing the form to update the label */}
         {selectedNode && (
           <div>
             <header>
@@ -178,7 +189,7 @@ const Pannel = () => {
           </div>
         )}
       </aside>
-
+      {/* on clickng the save button the popUp will show with the message in it... */}
       {popupMessage && <PopUp message={popupMessage} type={popupType} />}
     </div>
   );

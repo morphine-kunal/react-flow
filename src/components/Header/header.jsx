@@ -1,4 +1,6 @@
-// eslint-disable-next-line react/prop-types
+/* eslint-disable react/prop-types */
+
+// created header with a save changes button which will run the OnSave function comming from props..
 const Header = ({ onSave }) => {
   return (
     <header className="fixed top-0 left-0 w-full z-20">
