@@ -5,7 +5,7 @@ Product is live on <a href="https://frontend-assignment-kunal.vercel.app/" targe
 
 ## Features
 
-- Add, delete, and edit nodes in the flow diagram
+- Add and edit nodes in the flow diagram
 - Connect nodes to create edges
 - Save and load the flow diagram
 - Pop-up messages for feedback
